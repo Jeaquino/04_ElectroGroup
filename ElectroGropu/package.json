@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./src/bin/www",
-    "db":" "
+    "db":"sequelize db:drop & sequelize db:create & sequelize db:migrate &  sequelize db:seed:all "
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
