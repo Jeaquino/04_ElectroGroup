@@ -17,19 +17,20 @@ const storage = multer.diskStorage({
     }
 })
 
-const fileFilter = (req, file, cb) => {
-    const extension = path.extname(file.originalname).toLowerCase();
-    try{if (formatosAdmitidos.includes(extension)) {
-      cb(null, true);
-    } else {
-      cb( new Error('Formato de archivo no válido'), false);
-    }}
-    catch(Error){
-        console.log(Error)
-    }
-  }
+// const fileFilter = (req, file, cb) => {
+//     const extension = path.extname(file.originalname).toLowerCase();
+//     try{
+//       if (formatosAdmitidos.includes(extension)) {
+//       cb(null, true);
+//     } else {
+//       cb( new Error('Formato de archivo no válido'), false);
+//     }}
+//     catch(Error){
+//         console.log(Error)
+//     }
+//   }
 
-const upLoad = multer({storage,fileFilter});
+const upLoad = multer({storage});
 // const upLoad2 = multer({storage});
 router
 .get('/productDetail/:id', productDetail)
@@ -37,10 +38,10 @@ router
 .get('/productCart',sessionValidate, productCart)
 .get('/dashboard', isAdmin,dashboard)
 .get('/createProduct', formCreate)
-.post('/createProduct', upLoad.array("image",1), create)
+.post('/createProduct', upLoad.array("image",5), create)
 .delete('/delete/:id', destroy)
 .get('/editProduct/:id',formEdit)
-.put('/editProduct/:id', upLoad.array('image',1),editProduct)
+.put('/editProduct/:id', upLoad.array('image',5),editProduct)
 
 
 
