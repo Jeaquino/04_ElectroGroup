@@ -222,7 +222,8 @@ const detailcontrollers = {
         })
         })
     .then(()=>{
-    res.redirect(`/products/productDetail/${id}`)
+    res.redirect("/products/dashboard")
+      //res.redirect(`/products/productDetail/${id}`)
     })
     .catch(error=> console.log(error));
     }
