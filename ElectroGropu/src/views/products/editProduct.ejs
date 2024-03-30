@@ -4,7 +4,7 @@
 
         <%- include("../partials/header.ejs")%>
 
-            <main class="edit_product">
+            <!-- <main class="edit_product">
                 <form class="form-editProduct" action="/products/editProduct/<%= product.id%>?_method=PUT" method="POST"
                     enctype="multipart/form-data">
                     <div class="div-input-edicion">
@@ -20,8 +20,7 @@
                         </div>
                     <div class="div-input-edicion">
                         <label class="label-editP" for="image"></label>
-                        <input class="input-edicion" type="file" name="image" id="imagen"
-                             multiple>
+                        <input class="input-edicion" type="file" name="image" id="imagen" multiple>
                             
                     </div>
                 
@@ -33,6 +32,67 @@
                         <button class="boton_edit_a" type="submit"> Guardar Cambios</button>
                     </div>
                 </form>
+            </main> -->
+            <main class="createpro">
+                <form class="form-editProduct"  id="formulario" action="/products/editProduct/<%= product.id%>?_method=PUT" method="POST"
+                    enctype="multipart/form-data">
+                    
+                   
+                    <div class="formulario__grupo" id="grupo__titulo">
+                        <label for="titulo" class="formulario__label">Ingrese el titulo del producto</label>
+                        <div class="formulario__grupo-input">
+                            <input type="text" class="formulario__input"  name="titulo" value="<%= product.titulo%>">
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">El titulo tiene que ser de 4 a 99 dígitos.</p>
+                    </div>
+        
+                    <div class="formulario__grupo" id="grupo__brand">
+                        <label for="usuario" class="formulario__label">Ingrese la marca del producto</label>
+                        <div class="formulario__grupo-input">
+                            <input type="text" class="formulario__input"   name="brand" value="<%= product.brands.name%>">
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">La marca tiene que ser de 2 a 10 dígitos</p>
+                    </div>
+                    <div class="formulario__grupo" id="grupo__description">
+                        <label for="usuario" class="formulario__label">Agregue una breve descripcion</label>
+                        <div class="formulario__grupo-input">
+                            <input type="text" class="formulario__input"  name="description" id="descripcion"  value="<%= product.description_id%> " >
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">Agregue una breve descripcion</p>
+                    </div>
+                   
+                    
+                    <div class="PRECIOCREATE">
+                        <label for="imagen" >Selecciona una imagen para el producto</label>
+                        <input type="file"  name="image" id="imagen" multiple></input>
+                        
+                    </div>
+                    <div class="formulario__grupo" id="grupo__price">
+                        <label for="precio" class="formulario__label">Precio</label>
+                        <div class="formulario__grupo-input">
+                            <input type="text" class="formulario__input"  name="price" placeholder="$" value="<%= product.price%>"> 
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">El precio tiene que ser de 4 a 20 dígitos y solo puede contener numeros.</p>
+                    </div>
+        
+                
+                   <br>
+                   
+                    <div class="formulario__mensaje" id="formulario__mensaje">
+                        <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
+                    </div>
+                   
+                    <div class="formulario__grupo formulario__grupo-btn-enviar">
+                        <button type="submit" class="formulario__btn">Actualizar</button>
+                        <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Producto creado exitosamente!</p>
+                    </div>
+                </form>
+                <script src="/js/products/updateProduct.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             </main>
             <%- include("../partials/footer.ejs")%>
     </body>

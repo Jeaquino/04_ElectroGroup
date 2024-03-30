@@ -148,6 +148,9 @@ margin-top: 12px;
     padding-right: 50px;
     color: white
 }
+.loginredirc:hover {
+	box-shadow: 3px 0px 30px rgba(163,163,163, 1);
+}
 
 .register__buttom button {
     padding: 20px;
@@ -174,9 +177,15 @@ margin-top: 12px;
     font-weight: 500;
     margin-bottom: 5px;
 }
+.formulario__grupo{
+    width: 100%;
+}
 
 /*FORMULARIO DE REGISTRO tablet*/
 @media(min-width:768px) {
+    .formulario__grupo{
+        width: 100%;
+    }
     .iconousuario {
         position: absolute;
         left: 0%;
@@ -187,6 +196,7 @@ margin-top: 12px;
     .redessocialesregsiter {
         margin-left: 6%;
     }
+    
 
     .register__form .register__form_general {
         display: flex;
@@ -336,6 +346,9 @@ margin-top: 12px;
         position: relative;
         left: -23%;
         top: 48%;
+    }
+    .formulario__grupo{
+        width: 100%;
     }
 }
 
@@ -490,5 +503,8 @@ margin-top: 12px;
 
     .redessocialesregsiter {
         margin-left: 3%;
+    }
+    .formulario__grupo{
+        width: 100%;
     }
 }

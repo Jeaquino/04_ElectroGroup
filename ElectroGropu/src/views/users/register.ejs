@@ -13,54 +13,71 @@
                 <section class="main__register__form2">
 
 
-                    <form action="/users/register" method="post" class="register__form_general" enctype="multipart/form-data">
+                    <form action="/users/register" method="post" id="formulario" class="register__form_general" enctype="multipart/form-data">
+                        <div class="formulario__grupo" id="grupo__nombre">
+                            <label for="nombre" class="formulario__label">Ingrese Nombre</label>
+                            <div class="formulario__grupo-input">
+                                <input type="text" class="formulario__input" name="nombre" id="nombre" value="<%= locals.old && old.nombre ? old.nombre : null %>">
+                                <p class="mensaje_errors"><%= locals.errors && errors.nombre ? errors.nombre.msg : null %> </p>
+                                <i class="formulario__validacion-estado fas fa-times-circle" ></i>
+                            </div>
+                            <p class="formulario__input-error">El nombre tiene que ser de 4 a 20 dígitos y solo puede contener numeros, letras y guion bajo.</p>
+                        </div>
 
-                        <div class="register ">
-                            <label for="nombre">Ingrese Nombre</label>
-                            <input type="text" name="nombre" id="placeholder"  value="<%= locals.old && old.nombre ? old.nombre : null %>" >
-                            <p class="mensaje_errors"><%= locals.errors && errors.nombre ? errors.nombre.msg : null %> </p>
-                            <div class="iconousuario">
-                                <i class="fa-regular fa-circle-user" id="userIcon"></i>
+                        <div class="formulario__grupo" id="grupo__email">
+                            <label for="email" class="formulario__label">Correo Electrónico</label>
+                            <div class="formulario__grupo-input">
+                                <input type="email" class="formulario__input" name="email" id="correo" placeholder="correo@correo.com"value="<%= locals.old && old.email ? old.email : null %>" >
+                                <p class="mensaje_errors"><%= locals.errors && errors.email ? errors.email.msg : null %> </p>
+                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
                             </div>
+                            <p class="formulario__input-error">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
                         </div>
-                        <div class="register ">
-                            <label for="">Ingrese un correo</label>
-                            <input type="email" name="email" id="placeholder"  value="<%= locals.old && old.email ? old.email : null %>" >
-                            <p class="mensaje_errors"><%= locals.errors && errors.email ? errors.email.msg : null %> </p>
-                            <div class="iconousuario">
-                                <i class="fa-regular fa-envelope" id=""></i>
-                            </div>
-                        </div>
-                        <div class="register ">
+                        
+
+                
+                        <div class="formulario__grupo" id="grupo__email">
                             <label for="age">Fecha de N. :</label>
-                            <input class="campos" type="date" id="placeholder" name="age" value="<%= locals.user ? user.birthday : locals.old && old.birthday ? old.birthday : null %>">
+                            <input class="formulario__input" type="date" id="placeholder" name="age" value="<%= locals.user ? user.birthday : locals.old && old.birthday ? old.birthday : null %>">
+                        </div>
+                        
+                        <div class="formulario__grupo" id="grupo__password">
+                            <label for="password" class="formulario__label">Contraseña</label>
+                            <div class="formulario__grupo-input">
+                                <input type="password" class="formulario__input" name="password" id="password">
+                                <p class="mensaje_errors"><%= locals.errors && errors.password? errors.password.msg : null %> </p>
+                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                            </div>
+                            <p class="formulario__input-error">La contraseña tiene que ser de 4 a 18 dígitos.</p>
+                        </div>
+            
+                        <div class="formulario__grupo" id="grupo__password2">
+                            <label for="password2" class="formulario__label">Repetir Contraseña</label>
+                            <div class="formulario__grupo-input">
+                                <input type="password" class="formulario__input" name="password2" id="password2">
+                                <p class="mensaje_errors"><%= locals.errors && errors.password? errors.password.msg : null %> </p>
+                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                            </div>
+                            <p class="formulario__input-error">Ambas contraseñas deben ser iguales.</p>
                         </div>
 
-                        <div class="register ">
-                            <label for="">Ingrese una contraseña</label>
-                            <input type="password" name="password" id="placeholder">
-                            <p class="mensaje_errors"><%= locals.errors && errors.password? errors.password.msg : null %> </p>
-                            <div class="iconousuario">
-                                <i class="fa-solid fa-eye-slash" id=""></i>
-                            </div>
-                        </div>
-                        <div class="register ">
-                            <label for="password2">Confirme su contraseña</label>
-                            <input type="password" name="password2" id="placeholder">
-                            <p class="mensaje_errors"><%= locals.errors && errors.password ? errors.password.msg : null %> </p>
-                            <div class="iconousuario">
-                                <i class="fa-solid fa-eye-slash" id="look"></i>
-                            </div>
-                        </div>
+
+                      
                         <br>
-                        <div class="register ">
+                        <div class="formulario__grupo">
                             <label for="image" class="avatar">Foto de perfil</label>
                             <input type="file" class="form-avatar"  name="image">
                             <p class="mensaje_errors"><%= locals.errors && errors.image ? errors.image.msg : null %> </p>
                         </div>
+                        <div class="formulario__grupo" id="grupo__terminos">
+                            <label class="formulario__label">
+                                <input class="formulario__checkbox" type="checkbox" name="terminos" id="terminos">
+                                Acepto los Terminos y Condiciones
+                            </label>
+                        </div>
                         <div class="register__buttom">
 
-                            <button type="submit">Registrarme</button>
+                            <button type="submit" class="formulario__btn2"  >Registrarme</button>
 
 
                             <h6>Registrarme con</h6>
@@ -71,7 +88,7 @@
                                     <a href="https://facebook.com"><i class="fa-brands fa-facebook"></i></i></a>
                                 </ul>
                             </nav>
-                            <h5>¿ya tiene una cuenta? <a href="/users/login"> inicie sesión</a></h5>
+                            <h5>¿ya tiene una cuenta? <a class="loginredirc" href="/users/login"> inicie sesión</a></h5>
 
 
                         </div>
@@ -110,7 +127,8 @@
 
 
             <div class="footer__productcart">
-
+                <script src="/js/users/registeruser.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             </div>
             <%- include("../partials/footer.ejs")%>
     </body>

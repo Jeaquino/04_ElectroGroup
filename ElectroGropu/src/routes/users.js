@@ -14,7 +14,7 @@ router.get('/login', login);
 router.post('/login',loginValidator, processlogin);
 /* user register. */
 router.get('/register', register);
-router.post('/register', upload.single('image'), createUser);
+router.post('/register', upload.single('image'),  createUser);
 /* user logout. */
 router.get('/logout', logout)
 /* user dashboard. */

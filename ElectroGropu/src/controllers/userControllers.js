@@ -98,7 +98,7 @@ const usercontrollers = {
                 password: bcrypt.hashSync(password, 10),
             })
                 .then((user) => {
-                    res.render("users/login", { title: "login" ,user});
+                    
                 })
                 .catch((err) => {
                     console.log(err);

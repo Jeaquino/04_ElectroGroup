@@ -37,7 +37,7 @@ router
 .get('/', products)
 .get('/productCart',sessionValidate, productCart)
 .get('/dashboard', isAdmin,dashboard)
-.get('/createProduct', formCreate)
+.get('/createProduct',isAdmin, formCreate)
 .post('/createProduct', upLoad.array("image",5), create)
 .delete('/delete/:id', destroy)
 .get('/editProduct/:id',formEdit)

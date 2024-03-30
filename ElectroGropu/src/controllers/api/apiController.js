@@ -6,15 +6,12 @@ const db = require("../../database/models");
 const apiControllers = {
     productDetail:async(req, res)=> {
     try {
-        const { id } = Number.parseInt(req.params);
-            if(!Number.isInteger(id)){
-                throw new Error("ingrese un numero entero")
-            }
+        const { id } = req.params;
         const product= await db.Product.findByPk(id, {
         include: {association: "Images"}
         }) 
         if(!product){
-            throw new Error("el id ingresado no cohincide con ningun producto existente")
+            throw new Error("el id ingresado no coincide con ningun producto existente")
         }
         return res.status(200).send(product);
         

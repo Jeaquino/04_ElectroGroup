@@ -83,7 +83,10 @@ const detailcontrollers = {
     db.Product.findByPk(id,{
       include:[{
         association:"brands"
-      }
+      },
+      // {
+      //   association:"descriptions"
+      // }
    ]
     })
 
@@ -102,7 +105,7 @@ const detailcontrollers = {
 
   create: async function (req, res) {
     const { titulo, description, price, brand } = req.body;
-   
+
     try {
       const brands = await db.Brand.create({
         name: brand,
@@ -138,7 +141,7 @@ const detailcontrollers = {
         include: [{ association: "Images" }],
       });
 
-      res.redirect("/products/dashboard");
+      
     } catch (error) {
       console.error(error);
     }
@@ -222,7 +225,7 @@ const detailcontrollers = {
         })
         })
     .then(()=>{
-    res.redirect("/products/dashboard")
+    
       //res.redirect(`/products/productDetail/${id}`)
     })
     .catch(error=> console.log(error));
