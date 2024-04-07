@@ -44,7 +44,7 @@ const detailcontrollers = {
     });
   },
 
-  productcreate: function (req, res) {
+  productcreate: async function (req, res) {
     res.render("products/productcreate", { title: "productcreate" });
   },
 
@@ -71,10 +71,16 @@ const detailcontrollers = {
         console.log(error);
       });
   },
-  formCreate: (req, res) => {
+  formCreate: async (req, res) => {
+
+    const brands =  await db.Brand.findAll();
+
+    console.log("brands",brands);
+
     res.render("products/createProduct", {
       title: "Create Product",
       usuario: req.session.user,
+      brands
     });
   },
 
