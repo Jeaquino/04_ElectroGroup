@@ -1,9 +1,59 @@
 const addButton = document.querySelector('#add-property');
 const containerProperty = document.querySelector('#container-add-inputs');
-const regex = new RegExp(/[^\s]+(.*?).(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)$/)
+const inputName = document.querySelector('#titulo');
+const inputPrecio = document.querySelector('#price');
+const inputImage = document.querySelector('#imagen');
+const selectBrand = document.querySelector('#brand');
+const regex = new RegExp(/^[^\s]+\.(jpg|jpeg|png|gif|bmp)$/gm);
+const types = ['image/jpeg','image/png']
 const validateImage = (filename) => {
-    return regex.test(filename)
+    return types.includes(filename);
 }
+
+const isEmpty = (value) => {
+    return value == '';
+}
+
+const minLength = (value) => {
+    return value.length >= 3;
+}
+
+const addError = (element,error) => {
+    console.log("Error: ",element);
+    element.innerText = `${error}`;
+    element.style.display = "inline";
+}
+
+inputName.addEventListener('blur', function (e) {
+    let error = document.querySelector('#ErrorName');
+    console.log("p:", error);
+    if (isEmpty(e.target.value)) {
+        addError(error,'El campo no debe estar vacio')
+        return;
+    }else if (!minLength(e.target.value)) {
+        addError(error,'Debe tener un minimo de 3 caracteres')
+        return;    
+    }
+    error.style.display = 'none';
+
+
+})
+
+inputPrecio.addEventListener('blur',function (e) {
+    
+    let error = document.querySelector('#ErrorPrice');
+    if (isEmpty(e.target.value)) {
+        addError(error,'El campo no debe estar vacio')
+        return;
+    }
+
+    if (e.target.value <= 0){
+        addError(error,'El precio no puede ser igual o menor a 0')
+        return;    
+    }
+
+    error.style.display = 'none';
+})
 
 addButton.addEventListener('click', function (e) {
     const inputKey = document.createElement("input")
@@ -25,8 +75,10 @@ addButton.addEventListener('click', function (e) {
         containerProperty.removeChild(container);
     })
 
-    labelKey.innerText = "Ingrese una especficacion";
-    labelValue.innerText = "Ingrese un valor";
+    labelKey.innerText = "Especficacion";
+    inputKey.placeholder = "Ingrese una especficacion";
+    labelValue.innerText = "Detalle";
+    inputValue.placeholder = "Ingrese el detalle";
     inputKey.id = `key${containerProperty.childElementCount}`;
     inputValue.id = `value${containerProperty.childElementCount}`
     inputKey.classList.add("custom-input");
@@ -65,23 +117,22 @@ document.addEventListener('submit', function (e) {
 
         if (element.id == 'imagen') {
             if(element.files.length > 1){
-                element.files.every(file => {
-                    if(!validateImage(file.name)){
+                for(const file in element.files){
+                    console.log("boolean",!validateImage(element.files[file].type));             
+                    if(element.files[file].type && !validateImage(element.files[file].type)){
+                        console.log(element.files[file].type);
                         errores.push(`${element.name} solo permite los formatos: jpg,jpeg,png,gif,JPG,JPEG,PNG,GIF`)
-                        return false;
+                        return
                     }
-                    return true;
-                })
-                return;
+                }
             }else{
-                console.log('validate image',validateImage(element.files[0].name));
-                validateImage(element.files[0].name)
-                errores.push(`${element.name} solo permite los formatos: jpg,jpeg,png,gif,JPG,JPEG,PNG,GIF`)
-                return;
+                console.log('validate image',!validateImage(element.files[0].type));
+                
+                if (!validateImage(element.files[0].type)){
+                    errores.push(`${element.name} solo permite los formatos: jpg,jpeg,png,gif,JPG,JPEG,PNG,GIF`)
+                    return;
+                }
             }
-            
-
-            return;
         }
     })
 
@@ -98,5 +149,25 @@ document.addEventListener('submit', function (e) {
             html: mensaje,
             footer: '<a href="#">Why do I have this issue?</a>'
           });
+    }else{
+        console.log('inputImage',inputImage.files);
+        let description = '{"test":"example"}'
+        const data = {
+            titulo: inputName.value,
+            description,
+            files:inputImage.files,
+            price: inputPrecio.value,
+            brand: selectBrand.value,
+        }
+        const formData  = new FormData();
+        
+        for(const name in data) {
+            formData.append(name, data[name]);
+        }
+        console.log("host",window.location.hostname)
+        fetch(`http://localhost:3000/api/products/create`,{
+            method:'POST',
+            body: formData
+        })
     }
 })

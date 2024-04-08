@@ -3,120 +3,120 @@
         "titulo": "vivo",
         "price": 525736,
         "brand_id": 1,
-        "description_id": 1
+        "description":"{}"
     },
     {
         "titulo": "O2",
         "price": 547190,
         "brand_id": 2,
-        "description_id": 2
+        "description":"{}"
     },
     {
         "titulo": "Asus",
         "price": 1148687,
         "brand_id": 3,
-        "description_id": 3
+        "description":"{}"
     },
     {
         "titulo": "Spice",
         "price": 599111,
         "brand_id": 4,
-        "description_id": 4
+        "description":"{}"
     },
     {
         "titulo": "Celkon",
         "price": 479946,
         "brand_id": 5,
-        "description_id": 5
+        "description":"{}"
     },
     {
         "titulo": "alcatel",
         "price": 1563860,
         "brand_id": 6,
-        "description_id": 6
+        "description":"{}"
     },
     {
         "titulo": "Huawei",
         "price": 790727,
         "brand_id": 7,
-        "description_id": 7
+        "description":"{}"
     },
     {
         "titulo": "Prestigio",
         "price": 943811,
         "brand_id": 8,
-        "description_id": 8
+        "description":"{}"
     },
     {
         "titulo": "Acer",
         "price": 1465752,
         "brand_id": 9,
-        "description_id": 9
+        "description":"{}"
     },
     {
         "titulo": "Samsung",
         "price": 1015651,
         "brand_id": 10,
-        "description_id": 10
+        "description":"{}"
     },
     {
         "titulo": "Samsung",
         "price": 1001859,
         "brand_id": 11,
-        "description_id": 11
+        "description":"{}"
     },
     {
         "titulo": "Panasonic",
         "price": 578033,
         "brand_id": 12,
-        "description_id": 12
+        "description":"{}"
     },
     {
         "titulo": "Samsung",
         "price": 583194,
         "brand_id": 13,
-        "description_id": 13
+        "description":"{}"
     },
     {
         "titulo": "Realme",
         "price": 1142552,
         "brand_id": 14,
-        "description_id": 14
+        "description":"{}"
     },
     {
         "titulo": "Acer",
         "price": 892728,
         "brand_id": 15,
-        "description_id": 15
+        "description":"{}"
     },
     {
         "titulo": "Motorola",
         "price": 1576226,
         "brand_id": 16,
-        "description_id": 16
+        "description":"{}"
     },
     {
         "titulo": "MWg",
         "price": 872904,
         "brand_id": 17,
-        "description_id": 17
+        "description":"{}"
     },
     {
         "titulo": "Posh",
         "price": 1403801,
         "brand_id": 18,
-        "description_id": 18
+        "description":"{}"
     },
     {
         "titulo": "Sony",
         "price": 614968,
         "brand_id": 19,
-        "description_id": 19
+        "description":"{}"
     },
     {
         "titulo": "LG",
         "price": 359567,
         "brand_id": 20,
-        "description_id": 20
+        "description":"{}"
     }
 ]

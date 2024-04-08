@@ -14,7 +14,8 @@ module.exports = {
         allowNull: false
       },
       price: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false
       },
       brand_id: {
         type: Sequelize.INTEGER,
@@ -24,16 +25,10 @@ module.exports = {
           key:'id'
         }
       },
-      description_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model:{
-            tableName:'Descriptions'}, 
-          key:'id'
-        }
+      description: {
+        type: Sequelize.JSON,
+        allowNull: false
       },
-      
-      
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

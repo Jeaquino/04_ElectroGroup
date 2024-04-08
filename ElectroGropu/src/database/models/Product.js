@@ -12,17 +12,16 @@ module.exports = (sequelize, DataTypes) => {
     allowNull: false
   },
   price: {
-    type: DataTypes.INTEGER
+    type: DataTypes.INTEGER,
+    allowNull: false
   },
-  
-  
   brand_id: {
     type: DataTypes.INTEGER
   },
-  description_id: {
-    type: DataTypes.INTEGER
+  description: {
+    type: DataTypes.JSON,
+    allowNull: false
   },
-  
   createdAt: {
     allowNull: false,
     type: DataTypes.DATE
@@ -50,12 +49,7 @@ Product.associate = models =>{
     otherKey:"user_id",
     timestamps:true
   })
-  Product.hasOne(models.Description,{
-    as:"descriptions",
-    foreignKey:"description_id"
-  })
   Product.hasMany(models.Image,{
-   
     as:"Images",
     foreignKey:"product_id",
   })

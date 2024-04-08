@@ -3,8 +3,6 @@ const fs= require('fs')
 const path = require("path");
 const products =JSON.parse(fs.readFileSync(path.join (__dirname,"../seeders/products.json"), "utf-8"));
 const data= products.map(product=>{
-  
-  product.description_id=null;
   product.createdAt=new Date;
   product.updatedAt=new Date;
   return product

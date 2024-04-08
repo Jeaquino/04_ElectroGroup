@@ -5,14 +5,15 @@
  
     <main>
         <section class="section-create-product">
-            <form action="/products/createProduct" class="form-create-product" method="post" enctype="multipart/form-data">
+            <form action="" class="form-create-product" method="post" enctype="multipart/form-data">
                 <div class="container-create-product">
-                    <label for="nombre" id="nombre"> Ingrese el nombre del producto</label>
-                    <input type="text" name="nombre" class="column">
+                    <label for="titulo"> Ingrese el nombre del producto</label>
+                    <input type="text" name="titulo" id="titulo" class="column">
+                    <p style="display:none; color:red; font-weight: bold;" id="ErrorName">casa</p>
                 </div>
                 <div class="container-create-product">
-                    <label for="nombre" id="brand"> Ingrese la marca del producto</label>                    
-                    <select name="" id="">
+                    <label for="nombre" > Ingrese la marca del producto</label>                    
+                    <select name="brand" id="brand">
                         <% brands.forEach(brand => {  %>
                             <option value="<%= brand.id %>"><%= brand.name %></option>                    
                         <% }); %>
@@ -26,12 +27,13 @@
                 
                 <div class="container-create-product">
                     <label for="imagen" >Selecciona una imagen para el producto</label>
-                    <input type="file" name="imagen" id="imagen" class="column" accept=".jpg .jpeg .png .gif .JPG .JPEG .PNG .GIF"  multiple></input>
+                    <input type="file" name="imagen" id="imagen" class="column" accept="image/png, image/jpeg, , image/jpg, , image/gif"  multiple></input>
                 </div>
             
                 <div class="container-create-product">
                     <label for="price">Precio</label>
-                    <input type="number" name="price" placeholder="$" min=0 class="column">
+                    <input type="number" name="price" id="price" placeholder="$" min=0 class="column">
+                    <p style="display:none;color:red; font-weight: bold; "  id="ErrorPrice" >casa</p>
                 </div>
     
                 <div class="botons_createProduct">
